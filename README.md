@@ -1,5 +1,27 @@
 # SignInBestParctice
 
+This project demonstrate Sign-in form best practice.
+base on web.dev Sign-in form best practices article.
+link: https://web.dev/sign-in-form-best-practices/
+
+brief summary:
+
+1. use meaningful HTML elements: <form>, <input>, <label> and <button>.
+2. Label every input with a <label>.
+3. Use element attributes to access built-in browser features: type, name, autocomplete, required, autofocus.
+4. Use name="new-password" for a sign-up password input and for the new password in a Change password form.
+5. Use autocomplete="current-password" for a sign-in password input.
+6. Don't use autocomplete for a new password.
+7. Provide Show password functionality.
+8. Use aria-label and aria-describedby for password inputs.
+9. Don't double-up inputs.
+10. Design forms so the mobile keyboard doesn't obscure inputs or buttons.
+11. Ensure forms are usable on mobile: use legible text, and make sure inputs and buttons are large enough to work as touch targets.
+12. Maintain branding and style on your sign-up and sign-in pages.
+13. Test in the field as well as the lab: build page analytics, interaction analytics, and user-centric performance measurement into your sign-up and sign-in flow.
+14. Test across browsers and devices: form behaviour varies significantly across platforms.
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.1.
 
 ## Development server
