@@ -38,7 +38,11 @@
     </button>
     <label for="current-password">
       Password:
-      <input [type]="passwordShowToggle" formControlName="password" minlength="8" />
+      <input
+        [type]="passwordShowToggle"
+        formControlName="password"
+        minlength="8"
+      />
     </label>
     <div
       *ngIf="password.invalid && (password.dirty || password.touched)"
@@ -47,7 +51,7 @@
       <div *ngIf="password.errors.required">
         password is required.
       </div>
-      <div *ngIf="password.errors.minLength">
+      <div *ngIf="password.errors.minlength">
         Password must be 8 character or more.
       </div>
     </div>

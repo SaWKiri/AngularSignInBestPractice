@@ -12,7 +12,10 @@ export class AppComponent {
 
   signInForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('',[Validators.required, Validators.minLength(8), Validators.pattern("^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$")]),
+    password: new FormControl('', [
+      Validators.minLength(8),
+      Validators.required
+    ]),
   });
 
   constructor() {}
@@ -34,11 +37,13 @@ export class AppComponent {
     }
   }
 
-
-  get email() { return this.signInForm.get('email'); }
-  get password() { return this.signInForm.get('password'); }
+  get email() {
+    return this.signInForm.get('email');
+  }
+  get password() {
+    return this.signInForm.get('password');
+  }
 }
-
 
 export interface signInForm {
   email: string;
