@@ -1,4 +1,4 @@
-# SignInBestParctice
+# Sign-In Best Parctice
 
 This project demonstrate Sign-in form best practice.
 base on web.dev Sign-in form best practices article.
