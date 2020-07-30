@@ -1,4 +1,4 @@
-<form [formGroup]="signInForm">
+<form [formGroup]="signInForm" (ngSubmit)="submit()">
   <h1>Sign In</h1>
 
   <section>
@@ -12,10 +12,20 @@
         type="email"
         placeholder=" "
         autocomplete="username"
-        required
         autofocus
       />
     </label>
+    <div
+      *ngIf="email.invalid && (email.dirty || email.touched)"
+      class="error-label"
+    >
+      <div *ngIf="email.errors.required">
+        Email is required.
+      </div>
+      <div *ngIf="email.errors.email">
+        Must be valid Email address.
+      </div>
+    </div>
   </section>
   <section>
     <button
@@ -28,10 +38,26 @@
     </button>
     <label for="current-password">
       Password:
-      <input [type]="passwordShowToggle" formControlName="password" />
+      <input [type]="passwordShowToggle" formControlName="password" minlength="8" />
     </label>
-    <div id="password-constraints">Eight or more characters, with at least one&nbsp;lowercase and one uppercase letter.</div>
+    <div
+      *ngIf="password.invalid && (password.dirty || password.touched)"
+      class="error-label"
+    >
+      <div *ngIf="password.errors.required">
+        password is required.
+      </div>
+      <div *ngIf="password.errors.minLength">
+        Password must be 8 character or more.
+      </div>
+    </div>
+    <div id="password-constraints">
+      Eight or more characters, with at least one&nbsp;lowercase and one
+      uppercase letter.
+    </div>
   </section>
 
-  <button id="signin" [disabled]="!signInForm.valid">Sign in</button>
+  <button id="signin" type="submit" [disabled]="!signInForm.valid">
+    Sign in
+  </button>
 </form>

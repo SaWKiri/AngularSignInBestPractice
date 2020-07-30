@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -11,8 +11,8 @@ export class AppComponent {
   passwordShowToggle: 'text' | 'password' = 'password';
 
   signInForm = new FormGroup({
-    email: new FormControl('',[Validators.required]),
-    password: new FormControl('')
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('',[Validators.required, Validators.minLength(8), Validators.pattern("^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$")]),
   });
 
   constructor() {}
@@ -24,4 +24,23 @@ export class AppComponent {
       this.passwordShowToggle = 'text';
     }
   }
+
+  @Output() EM = new EventEmitter<signInForm>();
+  submit() {
+    if (this.signInForm.valid) {
+      this.EM.emit(this.signInForm.value);
+    } else {
+      console.log('form invalid, not submited');
+    }
+  }
+
+
+  get email() { return this.signInForm.get('email'); }
+  get password() { return this.signInForm.get('password'); }
+}
+
+
+export interface signInForm {
+  email: string;
+  password: string;
 }
